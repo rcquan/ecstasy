@@ -3,7 +3,9 @@ library("reshape2")
 library("plyr")
 library("data.table")
 
-# Functions
+#######################
+# Functions############
+#######################
 
 year.params.url <- function(year.start, year.end) {
 	# stores directory name search parameters for specified year
@@ -37,14 +39,11 @@ melt.data <- function(list.data) {
 	list.data <- list.data[with(list.data, order(raw.data.tablet.id)), ]
 	list.data <- as.data.frame(list.data)
 	return(list.data)
-}
-	 
-###################################################
-###################################################
-###################################################
-###################################################
+}	 
 
+#######################
 # ID Actives Processing
+#######################
 
 # test <- lapply(ecstasy.raw, create.id.actives)
 id.actives <- list()
@@ -57,10 +56,14 @@ id.actives <- id.actives[complete.cases(id.actives), ]
 setnames(id.actives, 1:2, c("id", "composition"))
 id.actives[, 2:3] <- colsplit(id.actives$composition, ":", c("composition", "proportion"))
 
+##########################
 # ID Attributes Processing
+##########################
 
 # error handling, NULL values break function create.id.attributes
-id.attributes <- lapply(ecstasy.raw, function(raw.data) if (raw.data$tablet$location == NULL) { raw.data$tablet$location <- "N/A"})
+id.attributes <- lapply(ecstasy.raw, 
+						function(raw.data) if (raw.data$tablet$location == NULL) {
+							raw.data$tablet$location <- "N/A"})
 
 # test <- lapply(ecstasy.raw, create.id.attributes)
 id.attributes <- list()
@@ -70,7 +73,9 @@ for (i in seq(ecstasy.raw)) {
 id.attributes <- as.data.frame(rbindlist(id.attributes, fill=TRUE))
 setnames(id.attributes, 1:4, c("id", "name", "location", "mass"))
 
-# Final Join 
+#######################
+# Final Join ##########
+#######################
 ecstasy <- join(id.actives, id.attributes, by = "id", type = "left")
 
 
