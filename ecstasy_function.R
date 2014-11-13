@@ -9,7 +9,7 @@ library("data.table")
 
 year.params.url <- function(year.start, year.end) {
 	# stores directory name search parameters for specified year
-	dir.name <- sprintf("http://www.ecstasydata.org/results_xml.php?sold_as_ecstasy=yes&Y1=%s&Y2=%s&max=500", year.start, year.end)
+	dir.name <- sprintf("http://www.ecstasydata.org/results_xml.php?sold_as_ecstasy=yes&amp;Y1=%s&amp;Y2=%s&max=500", year.start, year.end)
 	return(dir.name)
 }
 
@@ -47,7 +47,7 @@ melt.data <- function(list.data) {
 # Get Year Data #######
 #######################
 
-year.range <- year.params.url(2012, 2013)
+year.range <- year.params.url(2014, 2014)
 ecstasy.raw <- xml.to.raw(year.range)
 
 #######################
