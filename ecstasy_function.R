@@ -12,14 +12,12 @@ year.params.url <- function(year.start, year.end) {
 	dir.name <- sprintf("http://www.ecstasydata.org/results_xml.php?sold_as_ecstasy=yes&Y1=%s&Y2=%s&max=500", year.start, year.end)
 	return(dir.name)
 }
-year.2013.2014 <- year.params.url(2013, 2014)
 
 xml.to.raw <- function(year.params.url) {
 	# creates raw xml data
 	raw <- xmlToList(xmlParse(year.params.url))
 	return(raw)
 }
-ecstasy.raw <- xml.to.raw(year.2013.2014)
 
 create.id.actives <- function(raw.data) {
 	# stores actives in one row, prepare for melt
@@ -27,6 +25,10 @@ create.id.actives <- function(raw.data) {
 }
 
 create.id.attributes <- function(raw.data) {
+	if (is.null(raw.data$tablet$location)) {
+		raw.data$tablet$location <- "NA"
+	}
+		
 	return(data.frame(raw.data$tablet$id, 
 					  raw.data$tablet$name,
 				      raw.data$tablet$location,
@@ -42,11 +44,17 @@ melt.data <- function(list.data) {
 }	 
 
 #######################
+# Get Year Data #######
+#######################
+
+year.range <- year.params.url(2012, 2013)
+ecstasy.raw <- xml.to.raw(year.range)
+
+#######################
 # ID Actives Processing
 #######################
 
-# test <- lapply(ecstasy.raw, create.id.actives)
-id.actives <- list()
+id.actives <- vector("list", length=length(ecstasy.raw))
 for (i in seq(ecstasy.raw)) {
 	id.actives[[i]] <- create.id.actives(ecstasy.raw[i])
 }
@@ -60,13 +68,7 @@ id.actives[, 2:3] <- colsplit(id.actives$composition, ":", c("composition", "pro
 # ID Attributes Processing
 ##########################
 
-# error handling, NULL values break function create.id.attributes
-id.attributes <- lapply(ecstasy.raw, 
-						function(raw.data) if (raw.data$tablet$location == NULL) {
-							raw.data$tablet$location <- "N/A"})
-
-# test <- lapply(ecstasy.raw, create.id.attributes)
-id.attributes <- list()
+id.attributes <- vector("list", length=length(ecstasy.raw))
 for (i in seq(ecstasy.raw)) {
 	id.attributes[[i]] <- create.id.attributes(ecstasy.raw[i])
 }
@@ -78,4 +80,15 @@ setnames(id.attributes, 1:4, c("id", "name", "location", "mass"))
 #######################
 ecstasy <- join(id.actives, id.attributes, by = "id", type = "left")
 
+
+
+
+#######################
+
+# test <- lapply(ecstasy.raw, create.id.actives)
+# test <- lapply(ecstasy.raw, create.id.attributes)
+#create.id.actives <- function(raw.data) {
+	# stores actives in one row, prepare for melt
+	#return(data.frame(raw.data$id, raw.data$actives))	
+#}
 
