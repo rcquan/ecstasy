@@ -1,7 +1,7 @@
-library("XML")
-library("reshape2")
-library("plyr")
-library("data.table")
+library(XML)
+library(reshape2)
+library(plyr)
+library(data.table)
 library(RCurl)
 
 #######################
@@ -29,7 +29,7 @@ create.id.actives <- function(raw.data) {
 	return(data.frame(raw.data$tablet$id, raw.data$tablet$actives))	
 }
 
-create.id.attributes <- function(raw.data) {
+create.id.attributes <- function(raw.data, year) {
 	if (is.null(raw.data$tablet$location)) {
 		raw.data$tablet$location <- "NA"
 	}
@@ -80,7 +80,7 @@ createYearDF <- function(year) {
     
     id.attributes <- vector("list", length=length(ecstasy.raw))
     for (i in seq(ecstasy.raw)) {
-        id.attributes[[i]] <- create.id.attributes(ecstasy.raw[i])
+        id.attributes[[i]] <- create.id.attributes(ecstasy.raw[i], year)
     }
     id.attributes <- as.data.frame(rbindlist(id.attributes, fill=TRUE))
     setnames(id.attributes, 1:5, c("id", "name", "location", "mass", "year"))
