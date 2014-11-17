@@ -1,7 +1,7 @@
 library(dplyr)
 library(ggplot2)
-library(rjson)
-setwd("~/Copy/github/ecstasy/")
+library(rCharts)
+setwd("~/GitHub/ecstasy/")
 
 source("scrape_data.R")
 
@@ -56,8 +56,7 @@ mdma.df %>%
     group_by(year, mdma) %>%
     summarise(count = n()) %>%
     mutate(proportion = count / sum(count)) %>%
-	toJSON() %>%
-	write(file="mdma_prop.json")
+	write.csv(file="mdma_prop.csv")
 
 ecstasy %>%
 	## remove duplicated id's
@@ -70,14 +69,13 @@ ecstasy %>%
 	arrange(desc(count)) %>%
 	top_n(5) %>%
 	## write to json
-	toJSON() %>%
-	write(file="mdma_loc.json")
+	write.csv(file="mdma_loc.csv")
 
-
-hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
-n1 <- nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male, type = "multiBarChart")
-n1
-
+mdma.plot.subset <- subset(as.data.frame(mdma.plot), 
+                           mdma %in% c("Pure MDMA", "More MDMA", "Less MDMA", "No MDMA"))
+n1 <- nPlot(proportion ~ year, group = "mdma", 
+            data = mdma.plot.subset, type = "stackedAreaChart")
+n1$print("nvd3stacked")
 
 
 

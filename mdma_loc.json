@@ -1,1 +1,99 @@
-{"year":[1999,1999,1999,1999,1999,2000,2000,2000,2000,2000,2001,2001,2001,2001,2001,2002,2002,2002,2002,2002,2003,2003,2003,2003,2003,2004,2004,2004,2004,2004,2004,2005,2005,2005,2005,2005,2005,2005,2006,2006,2006,2006,2006,2006,2006,2006,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2008,2008,2008,2008,2008,2008,2008,2008,2009,2009,2009,2009,2009,2009,2010,2010,2010,2010,2010,2011,2011,2011,2011,2011,2012,2012,2012,2012,2012,2013,2013,2013,2013,2013,2014,2014,2014,2014,2014],"location":["Oakland, CA","MA","San Francisco, CA","Los Angeles, CA","New York, NY","San Francisco, CA","Los Angeles, CA","Providence, RI","New York, NY","Chicago, Il","New York, NY","San Francisco, CA","Los Angeles, CA","Seattle, WA","Chicago, Il","New York, NY","Los Angeles, CA","San Francisco, CA","Seattle, WA","Houston, TX","Los Angeles, CA","New York, NY","San Francisco, CA","Miami, FL","West Palm Beach, FL","Los Angeles, CA","San Francisco, CA","Fremont, CA","New York, NY","Austin, TX","Phoenix, AZ","Los Angeles, CA","Miami, FL","Seattle, WA","Austin, TX","New York, NY","Phoenix, AZ","San Francisco, CA","Los Angeles, CA","New York, NY","Thessalonika, Greece","Fort Lauderdale, FL","KY","Miami, FL","Oakland, CA","San Mateo, CA","Houston, TX","Blaine, WA","Los Angeles, CA","San Francisco, CA","Albany, NY","Boston, MA","Dallas, TX","Huntington Beach, CA","Miami, FL","San Diego, CA","Santa Clara, CA","Seattle, WA","West Columbia, MD","Winona County, MN","Los Angeles, CA","Portland, OR","CA","Tulsa, OK","Detroit, MI","Key West, FL","Lima, PA","New York, NY","Zurich, Switzerland","Vista, CA","Lincoln Parish, LA","Boise, ID","Las Vegas, NV","Los Angeles, CA","Zurich, Switzerland","Los Angeles, CA","Madison, WI","San Francisco, CA","New York, NY","Zurich, Switzerland","Baton Rouge, LA","Los Angeles, CA","New York, NY","Brisbane, CA","Zurich, Switzerland","San Francisco, CA","Los Angeles, CA","Miami, FL","Baton Rouge, LA","Spain","San Francisco, CA","New York, NY","Los Angeles, CA","Las Vegas, NV","San Francisco, CA","New York, NY","Los Angeles, CA","Las Vegas, NV","Sacramento, CA"],"count":[14,12,8,5,5,31,23,22,18,16,27,27,24,16,14,28,22,22,20,14,12,12,10,7,7,17,10,7,7,5,5,13,9,8,5,5,5,5,4,4,4,3,2,2,2,2,10,5,5,3,2,2,2,2,2,2,2,2,2,2,6,5,4,4,2,2,2,2,30,14,8,6,6,6,18,9,6,6,5,27,21,12,9,8,56,11,10,10,9,56,23,17,14,7,23,19,18,13,11]}
+{"year":"1999","location":"Oakland, CA","count":"14"}
+{"year":"1999","location":"MA","count":"12"}
+{"year":"1999","location":"San Francisco, CA","count":" 8"}
+{"year":"1999","location":"Los Angeles, CA","count":" 5"}
+{"year":"1999","location":"New York, NY","count":" 5"}
+{"year":"2000","location":"San Francisco, CA","count":"31"}
+{"year":"2000","location":"Los Angeles, CA","count":"23"}
+{"year":"2000","location":"Providence, RI","count":"22"}
+{"year":"2000","location":"New York, NY","count":"18"}
+{"year":"2000","location":"Chicago, Il","count":"16"}
+{"year":"2001","location":"New York, NY","count":"27"}
+{"year":"2001","location":"San Francisco, CA","count":"27"}
+{"year":"2001","location":"Los Angeles, CA","count":"24"}
+{"year":"2001","location":"Seattle, WA","count":"16"}
+{"year":"2001","location":"Chicago, Il","count":"14"}
+{"year":"2002","location":"New York, NY","count":"28"}
+{"year":"2002","location":"Los Angeles, CA","count":"22"}
+{"year":"2002","location":"San Francisco, CA","count":"22"}
+{"year":"2002","location":"Seattle, WA","count":"20"}
+{"year":"2002","location":"Houston, TX","count":"14"}
+{"year":"2003","location":"Los Angeles, CA","count":"12"}
+{"year":"2003","location":"New York, NY","count":"12"}
+{"year":"2003","location":"San Francisco, CA","count":"10"}
+{"year":"2003","location":"Miami, FL","count":" 7"}
+{"year":"2003","location":"West Palm Beach, FL","count":" 7"}
+{"year":"2004","location":"Los Angeles, CA","count":"17"}
+{"year":"2004","location":"San Francisco, CA","count":"10"}
+{"year":"2004","location":"Fremont, CA","count":" 7"}
+{"year":"2004","location":"New York, NY","count":" 7"}
+{"year":"2004","location":"Austin, TX","count":" 5"}
+{"year":"2004","location":"Phoenix, AZ","count":" 5"}
+{"year":"2005","location":"Los Angeles, CA","count":"13"}
+{"year":"2005","location":"Miami, FL","count":" 9"}
+{"year":"2005","location":"Seattle, WA","count":" 8"}
+{"year":"2005","location":"Austin, TX","count":" 5"}
+{"year":"2005","location":"New York, NY","count":" 5"}
+{"year":"2005","location":"Phoenix, AZ","count":" 5"}
+{"year":"2005","location":"San Francisco, CA","count":" 5"}
+{"year":"2006","location":"Los Angeles, CA","count":" 4"}
+{"year":"2006","location":"New York, NY","count":" 4"}
+{"year":"2006","location":"Thessalonika, Greece","count":" 4"}
+{"year":"2006","location":"Fort Lauderdale, FL","count":" 3"}
+{"year":"2006","location":"KY","count":" 2"}
+{"year":"2006","location":"Miami, FL","count":" 2"}
+{"year":"2006","location":"Oakland, CA","count":" 2"}
+{"year":"2006","location":"San Mateo, CA","count":" 2"}
+{"year":"2007","location":"Houston, TX","count":"10"}
+{"year":"2007","location":"Blaine, WA","count":" 5"}
+{"year":"2007","location":"Los Angeles, CA","count":" 5"}
+{"year":"2007","location":"San Francisco, CA","count":" 3"}
+{"year":"2007","location":"Albany, NY","count":" 2"}
+{"year":"2007","location":"Boston, MA","count":" 2"}
+{"year":"2007","location":"Dallas, TX","count":" 2"}
+{"year":"2007","location":"Huntington Beach, CA","count":" 2"}
+{"year":"2007","location":"Miami, FL","count":" 2"}
+{"year":"2007","location":"San Diego, CA","count":" 2"}
+{"year":"2007","location":"Santa Clara, CA","count":" 2"}
+{"year":"2007","location":"Seattle, WA","count":" 2"}
+{"year":"2007","location":"West Columbia, MD","count":" 2"}
+{"year":"2007","location":"Winona County, MN","count":" 2"}
+{"year":"2008","location":"Los Angeles, CA","count":" 6"}
+{"year":"2008","location":"Portland, OR","count":" 5"}
+{"year":"2008","location":"CA","count":" 4"}
+{"year":"2008","location":"Tulsa, OK","count":" 4"}
+{"year":"2008","location":"Detroit, MI","count":" 2"}
+{"year":"2008","location":"Key West, FL","count":" 2"}
+{"year":"2008","location":"Lima, PA","count":" 2"}
+{"year":"2008","location":"New York, NY","count":" 2"}
+{"year":"2009","location":"Zurich, Switzerland","count":"30"}
+{"year":"2009","location":"Vista, CA","count":"14"}
+{"year":"2009","location":"Lincoln Parish, LA","count":" 8"}
+{"year":"2009","location":"Boise, ID","count":" 6"}
+{"year":"2009","location":"Las Vegas, NV","count":" 6"}
+{"year":"2009","location":"Los Angeles, CA","count":" 6"}
+{"year":"2010","location":"Zurich, Switzerland","count":"18"}
+{"year":"2010","location":"Los Angeles, CA","count":" 9"}
+{"year":"2010","location":"Madison, WI","count":" 6"}
+{"year":"2010","location":"San Francisco, CA","count":" 6"}
+{"year":"2010","location":"New York, NY","count":" 5"}
+{"year":"2011","location":"Zurich, Switzerland","count":"27"}
+{"year":"2011","location":"Baton Rouge, LA","count":"21"}
+{"year":"2011","location":"Los Angeles, CA","count":"12"}
+{"year":"2011","location":"New York, NY","count":" 9"}
+{"year":"2011","location":"Brisbane, CA","count":" 8"}
+{"year":"2012","location":"Zurich, Switzerland","count":"56"}
+{"year":"2012","location":"San Francisco, CA","count":"11"}
+{"year":"2012","location":"Los Angeles, CA","count":"10"}
+{"year":"2012","location":"Miami, FL","count":"10"}
+{"year":"2012","location":"Baton Rouge, LA","count":" 9"}
+{"year":"2013","location":"Spain","count":"56"}
+{"year":"2013","location":"San Francisco, CA","count":"23"}
+{"year":"2013","location":"New York, NY","count":"17"}
+{"year":"2013","location":"Los Angeles, CA","count":"14"}
+{"year":"2013","location":"Las Vegas, NV","count":" 7"}
+{"year":"2014","location":"San Francisco, CA","count":"23"}
+{"year":"2014","location":"New York, NY","count":"19"}
+{"year":"2014","location":"Los Angeles, CA","count":"18"}
+{"year":"2014","location":"Las Vegas, NV","count":"13"}
+{"year":"2014","location":"Sacramento, CA","count":"11"}
