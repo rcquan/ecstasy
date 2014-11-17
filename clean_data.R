@@ -1,14 +1,15 @@
 library(dplyr)
 library(ggplot2)
+library(rjson)
+setwd("~/Copy/github/ecstasy/")
 
-setwd("~/GitHub/ecstasy")
 source("scrape_data.R")
-
 
 ecstasy <- create.ecstasy.df(1999:2014)
 
-## remove trailing spaces
+## remove trailing whitespaces
 ecstasy$composition <- gsub(" $","", ecstasy$composition, perl = TRUE)
+ecstasy$location <- gsub("\n", "", ecstasy$location)
 ## this coerces all non-numeric characters to NA
 ecstasy$proportion <- as.numeric(ecstasy$proportion)
 
@@ -21,7 +22,7 @@ for (i in id.vec) {
     pill <- ecstasy[ecstasy$id == i, c("composition", "proportion")]
     ## No MDMA
     if (!("MDMA" %in% pill$composition)) {
-        mdma[i] <- 4
+        mdma[i] <- 4 # No MDMA
         next
     }
     ## calculate MDMA as percentage of total composition
@@ -55,9 +56,41 @@ mdma.df %>%
     group_by(year, mdma) %>%
     summarise(count = n()) %>%
     mutate(proportion = count / sum(count)) %>%
+<<<<<<< HEAD
     select(year, mdma, proportion) %>%
     
     ggplot(aes(year, proportion)) +
     geom_area(aes(col = mdma, fill = mdma), position = "stack") +
     scale_fill_brewer(type = "div", palette = 1) +
     theme_classic()
+=======
+	toJSON() %>%
+	write(file="mdma_prop.json")
+
+ecstasy %>%
+	## remove duplicated id's
+	group_by(id, year, location) %>%
+	summarise(count = n()) %>%
+	## count location by year
+	group_by(year, location) %>%
+	summarise(count = n()) %>%
+	## take top by 5
+	arrange(desc(count)) %>%
+	top_n(5) %>%
+	## write to json
+	toJSON() %>%
+	write(file="mdma_loc.json")
+
+
+hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
+n1 <- nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male, type = "multiBarChart")
+n1
+
+
+
+
+#     ggplot(aes(year, proportion)) +
+#     geom_area(aes(col = mdma, fill = mdma), position = "stack") +
+#     scale_fill_brewer(type = "div", palette = 1) +
+#     theme_classic()
+>>>>>>> upstream/dev
