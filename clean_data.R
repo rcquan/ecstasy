@@ -55,6 +55,7 @@ mdma.df %>%
     group_by(year, mdma) %>%
     summarise(count = n()) %>%
     mutate(proportion = count / sum(count)) %>%
+    select(year, mdma, proportion) %>%
     
     ggplot(aes(year, proportion)) +
     geom_area(aes(col = mdma, fill = mdma), position = "stack") +
