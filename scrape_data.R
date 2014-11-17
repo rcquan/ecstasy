@@ -6,7 +6,8 @@ library(RCurl)
 
 
 create.ecstasy.df <- function(year) {
-    
+    ## Args:
+	## 	years: a numeric vector of years
     ecstasy.list <- lapply(year, xml.to.dataframe)
     ecstasy.df <- do.call(rbind, ecstasy.list)
     return(ecstasy.df)
