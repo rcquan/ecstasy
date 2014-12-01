@@ -1,6 +1,6 @@
+library(plyr)
 library(dplyr)
-library(ggplot2)
-library(rCharts)
+library(RJSONIO)
 setwd("~/GitHub/ecstasy/")
 
 source("scrape_data.R")
@@ -71,11 +71,29 @@ ecstasy %>%
 	## write to json
 	write.csv(file="mdma_loc.csv")
 
-mdma.plot.subset <- subset(as.data.frame(mdma.plot), 
-                           mdma %in% c("Pure MDMA", "More MDMA", "Less MDMA", "No MDMA"))
-n1 <- nPlot(proportion ~ year, group = "mdma", 
-            data = mdma.plot.subset, type = "stackedAreaChart")
-n1$print("nvd3stacked")
+pills.by.year <- ecstasy %>%
+    group_by(year) %>%
+    summarise(total = length(unique(id)))
+
+composition.prop <- ecstasy %>%
+    group_by(year, composition) %>%
+    summarise(count = n()) %>%
+    join(pills.by.year, by = "year") %>%
+    mutate(proportion = count / total) %>%
+    select(year, composition, proportion) %>%
+    mutate(year = factor(year)) 
+
+composition.prop.list <- split(composition.prop, composition.prop$year)
+composition.prop.list <- lapply(composition.prop.list, function(df) df[, -1])
+composition.prop.json <- toJSON(composition.prop.list)
+write(composition.prop.json, file = "ecstasy_composition_by_year.json")
+    
+
+# mdma.plot.subset <- subset(as.data.frame(mdma.plot), 
+#                            mdma %in% c("Pure MDMA", "More MDMA", "Less MDMA", "No MDMA"))
+# n1 <- nPlot(proportion ~ year, group = "mdma", 
+#             data = mdma.plot.subset, type = "stackedAreaChart")
+# n1$print("nvd3stacked")
 
 
 
@@ -83,3 +101,8 @@ n1$print("nvd3stacked")
 #     geom_area(aes(col = mdma, fill = mdma), position = "stack") +
 #     scale_fill_brewer(type = "div", palette = 1) +
 #     theme_classic()
+
+cat(toJSON(composition.prop.list$'1999',)
+
+toJSON(list(1L, c("a", "b"), list(c(FALSE, FALSE, TRUE), rnorm(3))))
+
