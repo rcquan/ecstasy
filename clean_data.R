@@ -6,42 +6,42 @@ setwd("~/GitHub/ecstasy/")
 source("scrape_data.R")
 
 ecstasy <- create.ecstasy.df(1999:2014)
+write.csv(ecstasy, "ecstasy.csv", row.names = FALSE)
+
+ecstasyTest <- read.csv("ecstasy.csv")
+ecstasy <- ecstasyTest
 
 ## remove trailing whitespaces
 ecstasy$composition <- gsub(" $","", ecstasy$composition, perl = TRUE)
 ecstasy$location <- gsub("\n", "", ecstasy$location)
 ## this coerces all non-numeric characters to NA
-ecstasy$proportion <- as.numeric(ecstasy$proportion)
+ecstasy$proportion <- as.numeric(as.character(ecstasy$proportion))
 
 
 ## create categorical variable for mdma proportion in pill
 mdma <- vector()
 id.vec <- unique(ecstasy$id)
-for (i in id.vec) {
+for (i in 1:length(id.vec)) {
     ## subset by pill id
-    pill <- ecstasy[ecstasy$id == i, c("composition", "proportion")]
+    pill <- ecstasy[ecstasy$id == id.vec[i], c("composition", "proportion")]
     ## No MDMA
     if (!("MDMA" %in% pill$composition)) {
         mdma[i] <- 4 # No MDMA
-        next
-    }
-    ## calculate MDMA as percentage of total composition
-    mdma.prop <- pill[pill$composition == "MDMA", "proportion"] / sum(pill$proportion)
-    print(mdma.prop)
-    ## 
-    if (is.nan(mdma.prop) | is.na(mdma.prop)) {
-        mdma[i] <- 5
-        next
-    } else if (mdma.prop > 0.5 & mdma.prop < 1) {
-        mdma[i] <- 2
-    } else if (mdma.prop <= 0.5 & mdma.prop > 0) {
-        mdma[i] <- 3
-    ## pure mdma
-    } else if (mdma.prop == 1) {
-        mdma[i] <- 1
     } else {
-        mdma[i] <- 5
-        next
+        ## calculate MDMA as percent of total composition
+        mdma.prop <- pill[pill$composition == "MDMA", "proportion"] / sum(pill$proportion)
+        print(paste(i, mdma.prop))
+        if (is.nan(mdma.prop) | is.na(mdma.prop)) {
+            mdma[i] <- 5 ## unknown
+        } else if (mdma.prop > 0.5 & mdma.prop < 1) {
+            mdma[i] <- 2 ## more mdma
+        } else if (mdma.prop <= 0.5 & mdma.prop > 0) {
+            mdma[i] <- 3 ## less mdma
+        } else if (mdma.prop == 1) {
+            mdma[i] <- 1 ## pure mdma
+        } else {
+            mdma[i] <- 5 ## unknown
+        }
     }
 }
 
@@ -97,10 +97,10 @@ write(composition.prop.json, file = "ecstasy_composition_by_year.json")
 
 
 
-#     ggplot(aes(year, proportion)) +
-#     geom_area(aes(col = mdma, fill = mdma), position = "stack") +
-#     scale_fill_brewer(type = "div", palette = 1) +
-#     theme_classic()
+    ggplot(aes(year, proportion)) +
+    geom_area(aes(col = mdma, fill = mdma), position = "stack") +
+    scale_fill_brewer(type = "div", palette = 1) +
+    theme_classic()
 
 cat(toJSON(composition.prop.list$'1999',)
 
