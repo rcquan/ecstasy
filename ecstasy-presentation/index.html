@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ecstasy</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Ecstasy">
+  <meta name="author" content="Ryan Quan &amp; Frank Chen">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+<link rel=stylesheet href="./assets/css/slidify.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Ecstasy</h1>
+    <h2></h2>
+    <p>Ryan Quan &amp; Frank Chen<br/>Columbia University</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <!-- Limit image width and height -->
+
+<style type='text/css'>
+img {
+    max-height: 560px;
+    max-width: 964px;
+}
+</style>
+
+<!-- Center image on slide -->
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+
+<script type='text/javascript'>
+$(function() {
+    $("p:has(img)").addClass('centered');
+});
+</script>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Our Question</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><q>How has the composition of pills sold as ecstasy changed over time?</q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Outline</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Background</li>
+<li>Data Source</li>
+<li>Getting and Cleaning Data</li>
+<li>Sketches and Visualizations</li>
+<li>TODO</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue dark" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Background</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>What is Ecstasy?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Any pill represented as MDMA on the street</li>
+<li>Notoriously unreliable in content and purity</li>
+<li>Can come in tablet, powder, or crystalline form</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Pill Form</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/ecstasy01.jpg" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Powder Form</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/ecstasy02.jpg" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Common Effects</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Positive
+
+<ul>
+<li>feelings of comfort, empathy, and connection to others</li>
+<li>decreased fear, anxiety, and insecurities</li>
+<li>increased awareness and appreciation of music</li>
+</ul></li>
+<li>Negative
+
+<ul>
+<li>jaw clenching, teeth grinding, cheek chewing</li>
+<li>increase in body temperature, dehydration</li>
+<li>hyponatremia (drinking too much water)</li>
+<li>post-trip crash</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>In The News</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li><img src="assets/img/headline02.png" alt=""></li>
+<li><img src="assets/img/headline03.png" alt=""></li>
+<li><img src="assets/img/headline04.png" alt=""></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Word on the Street</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><q>The mainstream popularity of music festivals and raves has led to an upsurge of &quot;impure&quot; ecstasy pills as demand of MDMA exceeds supply.</q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue dark" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Data Source</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Dead End?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Data on Schedule I substances is difficult to obtain</li>
+<li>Very few human studies available</li>
+<li>Collecting new data was not a reasonable option</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>EcstasyData.org</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Independent lab pill testing program</li>
+<li>Run by <a href="https://www.erowid.org/">Erowid Center</a> and sponsored by <a href="http://www.dancesafe.org/">Dancesafe</a></li>
+<li>Analyze chemical composition of user-submitted and confiscated pills</li>
+<li>Publish results <a href="http://www.ecstasydata.org/results.php">online</a> as a means of harm reduction</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Caveats</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Sample bias</li>
+<li>Chemical composition presented as ratio, not mass percent</li>
+<li>Not concerned with therapeutic dose of individual substances</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue dark" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Getting and Cleaning Data</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Data Scraping</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Do everything the dumb way for one year…
+
+<ul>
+<li>Played around with the query URL to test the parameters</li>
+</ul></li>
+</ul>
+
+<pre><code class="r">url &lt;- sprintf(&quot;http://www.ecstasydata.org/results_xml.php?sold_as_ecstasy=yes&amp;
+Y1=%s&amp;Y2=%s&amp;max=500&quot;, year, year)
+</code></pre>
+
+<ul>
+<li>Obtained raw XML for 2013-2014 using the <code>XML</code> package</li>
+</ul>
+
+<pre><code class="r">raw &lt;- xmlToList(xmlParse(year.params.url))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Data Wrangling</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>ID and active components
+
+<ul>
+<li>Looped through active components using <code>lapply</code> and put them in a dataframe</li>
+</ul></li>
+<li>Active components (list element) were trapped in the columnar format &quot;X:Y&quot;
+
+<ul>
+<li>Use <code>colsplit</code> to separate composition:proportion</li>
+</ul></li>
+</ul>
+
+<pre><code class="r">id.actives &lt;- id.actives[complete.cases(id.actives), ]
+id.actives[, 2:3] &lt;- colsplit(id.actives$composition, &quot;:&quot;, 
+c(&quot;composition&quot;, &quot;proportion&quot;))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Data Wrangling</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>ID and attributes (name, location, mass, year)
+
+<ul>
+<li>Additional attributes by ID were looped via <code>lapply</code> and put in a dataframe</li>
+<li><code>NULL</code> locations broke <code>lapply</code> loop, fixed with an <code>if(is.null)</code> statement</li>
+</ul></li>
+</ul>
+
+<pre><code class="r">if (is.null(raw.data$tablet$location)) {
+        raw.data$tablet$location &lt;- &quot;NA&quot;
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Data Wrangling</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Combine actives and attributes by ID</li>
+<li>melt / cast dataframe using reshape2 package</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Complete Script (All Years)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Scrape data for 1999-2014 via functionalization of all previous operations
+
+<ul>
+<li>Script would break due to unescaped ampersands (<code>EntityRef Error</code>)</li>
+</ul></li>
+<li>Used <code>gsub</code> to substitute entity reference which allowed the script to run</li>
+</ul>
+
+<pre><code class="r">doc &lt;- getURL(url)
+doc &lt;- gsub(&quot;&amp;&quot;, &quot;&amp;amp;&quot;, doc)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Cleaning</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Combined all yearly datasets into one large, melted dataset</li>
+<li>Removed trailing whitespaces, coerced all non-numeric chars to <code>NA</code></li>
+</ul>
+
+<pre><code class="r">ecstasy$composition &lt;- gsub(&quot; $&quot;,&quot;&quot;, ecstasy$composition, perl = TRUE)
+ecstasy$location &lt;- gsub(&quot;\n&quot;, &quot;&quot;, ecstasy$location)
+
+ecstasy$proportion &lt;- as.numeric(ecstasy$proportion)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Cleaning</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Applied bin categorical weights based on normalized composition
+
+<ol>
+<li>Pure MDMA \((=1)\)</li>
+<li>More MDMA \((\ge 0.5)\)</li>
+<li>Less MDMA \((< 0.5)\)</li>
+<li>No MDMA \((=0)\)</li>
+<li>Unknown</li>
+</ol></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Cleaning</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">if (!(&quot;MDMA&quot; %in% pill$composition)) {
+        mdma[i] &lt;- 4 # No MDMA
+}
+mdma.prop &lt;- pill[pill$composition == &quot;MDMA&quot;, &quot;proportion&quot;] / sum(pill$proportion)
+if (is.nan(mdma.prop) | is.na(mdma.prop)) {
+    mdma[i] &lt;- 5
+    } else if (mdma.prop &gt; 0.5 &amp; mdma.prop &lt; 1) {
+        mdma[i] &lt;- 2
+    } else if (mdma.prop &lt;= 0.5 &amp; mdma.prop &gt; 0) {
+        mdma[i] &lt;- 3
+    } else if (mdma.prop == 1) {
+        mdma[i] &lt;- 1
+    } else {
+        mdma[i] &lt;- 5
+    }
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Sketches and Visualizations</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Sketches</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/ecstasy_sketch.jpeg" alt="sketch"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Sketches</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Simple interactive dotplot</li>
+<li>3-D visualization of deviations...how to do 4-D? Nah.</li>
+<li>Mini circles in a big circle? Sort of like a pie chart…</li>
+<li>Stacked stream, area, or bar?</li>
+<li>Dunkin’ donuts chart</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Visualizations</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Static (ggplot)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Visualizations</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Stacked Bar Plot (rCharts)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Visualizations</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Stacked Area Plot with hover-overs (d3)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>Visualizations</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Slider Dot Plot (d3)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title=''>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Our Question'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Outline'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Background'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='What is Ecstasy?'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Pill Form'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Powder Form'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Common Effects'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='In The News'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Word on the Street'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Data Source'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Dead End?'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='EcstasyData.org'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Caveats'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Getting and Cleaning Data'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Data Scraping'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Data Wrangling'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Data Wrangling'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Data Wrangling'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Complete Script (All Years)'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Cleaning'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Cleaning'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Cleaning'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Sketches and Visualizations'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Sketches'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Sketches'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Visualizations'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Visualizations'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Visualizations'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Visualizations'>
+         30
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
