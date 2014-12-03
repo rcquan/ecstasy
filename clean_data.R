@@ -1,63 +1,72 @@
+library(plyr)
 library(dplyr)
-library(ggplot2)
-library(rCharts)
-setwd("~/GitHub/ecstasy/")
+library(RJSONIO)
 
-source("scrape_data.R")
+#######################
+# Load the Data
+#######################
+ecstasy <- read.csv("ecstasy.csv")
 
-ecstasy <- create.ecstasy.df(1999:2014)
+#######################
+# Clean Data
+#######################
 
 ## remove trailing whitespaces
 ecstasy$composition <- gsub(" $","", ecstasy$composition, perl = TRUE)
 ecstasy$location <- gsub("\n", "", ecstasy$location)
 ## this coerces all non-numeric characters to NA
-ecstasy$proportion <- as.numeric(ecstasy$proportion)
+ecstasy$proportion <- as.numeric(as.character(ecstasy$proportion))
 
+#######################
+# Create Factors
+#######################
 
 ## create categorical variable for mdma proportion in pill
 mdma <- vector()
 id.vec <- unique(ecstasy$id)
-for (i in id.vec) {
+for (i in 1:length(id.vec)) {
     ## subset by pill id
-    pill <- ecstasy[ecstasy$id == i, c("composition", "proportion")]
+    pill <- ecstasy[ecstasy$id == id.vec[i], c("composition", "proportion")]
     ## No MDMA
     if (!("MDMA" %in% pill$composition)) {
         mdma[i] <- 4 # No MDMA
-        next
-    }
-    ## calculate MDMA as percentage of total composition
-    mdma.prop <- pill[pill$composition == "MDMA", "proportion"] / sum(pill$proportion)
-    print(mdma.prop)
-    ## 
-    if (is.nan(mdma.prop) | is.na(mdma.prop)) {
-        mdma[i] <- 5
-        next
-    } else if (mdma.prop > 0.5 & mdma.prop < 1) {
-        mdma[i] <- 2
-    } else if (mdma.prop <= 0.5 & mdma.prop > 0) {
-        mdma[i] <- 3
-    ## pure mdma
-    } else if (mdma.prop == 1) {
-        mdma[i] <- 1
     } else {
-        mdma[i] <- 5
-        next
+        ## calculate MDMA as percent of total composition
+        mdma.prop <- pill[pill$composition == "MDMA", "proportion"] / sum(pill$proportion)
+        print(paste(i, mdma.prop))
+        if (is.nan(mdma.prop) | is.na(mdma.prop)) {
+            mdma[i] <- 5 ## unknown
+        } else if (mdma.prop > 0.5 & mdma.prop < 1) {
+            mdma[i] <- 2 ## more mdma
+        } else if (mdma.prop <= 0.5 & mdma.prop > 0) {
+            mdma[i] <- 3 ## less mdma
+        } else if (mdma.prop == 1) {
+            mdma[i] <- 1 ## pure mdma
+        } else {
+            mdma[i] <- 5 ## unknown
+        }
     }
 }
 
+## transform numeric to factor with labels
 mdma <- factor(mdma, labels = c("Pure MDMA", "More MDMA", "Less MDMA", 
                                 "No MDMA", "Unknown"))
 mdma.df <- data.frame(id = unique(ecstasy$id), 
                       mdma = mdma,
                       year = ecstasy[!duplicated(ecstasy$id), "year"])
+#######################
+# Export the Data
+#######################
+suppressWarnings(dir.create("data"))
 
-
+## mdma proportion
 mdma.df %>%
     group_by(year, mdma) %>%
     summarise(count = n()) %>%
     mutate(proportion = count / sum(count)) %>%
-	write.csv(file="mdma_prop.csv")
+	write.csv(file = "data/mdma_prop.csv")
 
+## mdma by location
 ecstasy %>%
 	## remove duplicated id's
 	group_by(id, year, location) %>%
@@ -69,17 +78,23 @@ ecstasy %>%
 	arrange(desc(count)) %>%
 	top_n(5) %>%
 	## write to json
-	write.csv(file="mdma_loc.csv")
-
-mdma.plot.subset <- subset(as.data.frame(mdma.plot), 
-                           mdma %in% c("Pure MDMA", "More MDMA", "Less MDMA", "No MDMA"))
-n1 <- nPlot(proportion ~ year, group = "mdma", 
-            data = mdma.plot.subset, type = "stackedAreaChart")
-n1$print("nvd3stacked")
+	write.csv(file = "data/mdma_loc.csv")
 
 
+## ecstasy composition by year
+pills.by.year <- ecstasy %>%
+    group_by(year) %>%
+    summarise(total = length(unique(id)))
 
-#     ggplot(aes(year, proportion)) +
-#     geom_area(aes(col = mdma, fill = mdma), position = "stack") +
-#     scale_fill_brewer(type = "div", palette = 1) +
-#     theme_classic()
+composition.prop <- ecstasy %>%
+    group_by(year, composition) %>%
+    summarise(count = n()) %>%
+    join(pills.by.year, by = "year") %>%
+    mutate(proportion = count / total) %>%
+    select(year, composition, proportion) %>%
+    mutate(year = factor(year)) 
+
+composition.prop.list <- split(composition.prop, composition.prop$year)
+composition.prop.list <- lapply(composition.prop.list, function(df) df[, -1])
+composition.prop.json <- toJSON(composition.prop.list)
+write(composition.prop.json, file = "data/ecstasy_composition_by_year.json")
