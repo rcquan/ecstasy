@@ -122,10 +122,5 @@ melt.data <- function(list.data) {
 
 #######################
 
-# test <- lapply(ecstasy.raw, create.id.actives)
-# test <- lapply(ecstasy.raw, create.id.attributes)
-#create.id.actives <- function(raw.data) {
-	# stores actives in one row, prepare for melt
-	#return(data.frame(raw.data$id, raw.data$actives))	
-#}
-
+ecstasy <- create.ecstasy.df(1999:2014)
+write.csv(ecstasy, "ecstasy.csv", row.names = FALSE)
