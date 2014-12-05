@@ -1,5 +1,10 @@
 Ecstasy
 =======
+
+* Track the individual pills through the years
+* Plot ALL the pills on a scatter plot
+
+
 Visualizing laboratory pill testing data from EcstasyData.org, an independent laboratory testing program run by the Erowid Center.
 
 **Collaborators**: Ryan Quan (rcquan), Frank Chen (frankchen07)
